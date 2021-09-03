@@ -1,0 +1,47 @@
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <div id="info" class="container">
+        <input v-model="search" class="form-control" placeholder="search by date or date">
+        <table>
+            <thead>
+                <tr>
+                  <th v-repeat="column: columns">
+                    <a href="#" v-on="click: sortBy(column)" v-class="active: sortKey == column">
+                      {{ column | capitalize |texts}}
+                    </a>
+                  </th>
+                </tr>
+              </thead>
+        
+        
+              <tbody>
+                <tr v-repeat="users | filterBy search | orderBy sortKey reverse">
+                  <td>{{ name }}</td>
+                  <td>{{ date }}</td>
+                  <td>{{ comments}}</td>
+                </tr>
+              </tbody>
+        </table>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" v-model="newUser.name" >
+          </div>
+        
+          <div class="form-group">
+            <label>Date
+            </label>
+            <input type="text" class="form-control" v-model="newUser.date"placeholder="2020/02/02">
+            </div>
+            <div>
+            <label>Comments
+            </label>
+            <input type="text" class="form-control" v-model="newUser.comment"placeholder="leave comments">
+          </div>
+          <button type="submit" class="btn btn-primary" v-on="click: addUser()">Add</button>
+        </div>
+</body>
+
+<script>
+    
+</script>
+
